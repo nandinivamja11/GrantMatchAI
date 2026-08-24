@@ -1,0 +1,93 @@
+{
+  "theme": "light",
+  "typography": {
+    "english": "Inter, sans-serif",
+    "hindi": "Noto Sans Devanagari, sans-serif",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0B192C]",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0B192C]",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-tight text-[#0B192C]",
+      "body": "text-base leading-relaxed text-slate-700",
+      "small": "text-sm text-slate-500 uppercase tracking-widest font-semibold"
+    },
+    "guidelines": "Ensure tight letter spacing for headings to maintain a premium SaaS look. Apply 'font-sans' with Inter for English, and switch to Noto Sans Devanagari for Hindi content dynamically."
+  },
+  "colors": {
+    "primary_navy": "#0B192C",
+    "accent_saffron": "#FF9933",
+    "background": "#FAFAFA",
+    "surface": "#FFFFFF",
+    "border": "#E2E8F0",
+    "text_main": "#0F172A",
+    "text_muted": "#64748B",
+    "success": "#10B981",
+    "warning": "#F59E0B"
+  },
+  "visual_enhancers": [
+    "Borders: 1px subtle borders (border-slate-200) for cards and containers to maintain a clean, flat, fintech look (Razorpay style).",
+    "Shadows: Avoid heavy ambient shadows on default state. Use crisp drop shadows or slight lift (-translate-y-1) on hover.",
+    "Header: Glassmorphism for the sticky header: 'backdrop-blur-xl bg-white/80 border-b border-slate-200'.",
+    "Readiness Gauge: Implement a semi-circle or circular progress component that gradients from Saffron to Green.",
+    "Empty States: Friendly illustrations (using Lucide icons) with bilingual microcopy guiding the user.",
+    "Color Rule: Tinted neutral greys (Slate) instead of pure #000000 or #808080."
+  ],
+  "components": {
+    "cards": "Use Shadcn Card. Go cardless or use sharp 1px border cards. Avoid excessive border-radius; use rounded-md or rounded-lg maximum.",
+    "forms": "Use Shadcn Form, Input, Select. Generous spacing (gap-6) between form rows. Inputs should have subtle borders and clear focus rings.",
+    "buttons": "Shadcn Button. Pill-shaped (rounded-full) or sharp rectangular (rounded-md). Primary CTAs must use Saffron accent with white text.",
+    "gauge": "Custom SVG or Recharts radial bar for the readiness score.",
+    "calendar": "Shadcn Calendar for consulting booking."
+  },
+  "grids_and_layouts": {
+    "marketing": "Use Bento grid for features. Generous padding (p-12, p-16) and wide gaps (gap-8). Asymmetric spans to break monotony.",
+    "dashboard": "High-density Grid Mode B for admin/user portal. grid-cols-1 md:grid-cols-4. gap-6. Clear sidebar navigation hierarchy.",
+    "mobile": "Mobile-first approach. 70%+ mobile users means tables must be horizontally scrollable or render as list cards on small viewports.",
+    "spacing": "Generous Spacing Philosophy. Use 2-3x more spacing than typical designs."
+  },
+  "motion": {
+    "hover": "Micro-animations on hover: 'transition-all duration-200 ease-out'.",
+    "entrance": "Use Framer Motion for staggered fade-up on scheme result cards.",
+    "interactions": "Smooth state transitions for language toggle and form step progression."
+  },
+  "accessibility": {
+    "contrast": "Ensure white text over Saffron CTA meets APCA/WCAG standards. Use bold weights to compensate if needed.",
+    "focus": "Explicit focus states: 'focus:ring-2 focus:ring-[#FF9933] focus:outline-none focus:ring-offset-2'.",
+    "aria": "Add aria-labels to the language toggle, icon buttons, and visually hidden text for screen readers."
+  },
+  "media": {
+    "image_urls": {
+      "hero_founder": {
+        "url": "https://images.unsplash.com/photo-1737573156037-d2bb948cd385?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBzdGFydHVwJTIwZm91bmRlciUyMHdvcmtpbmd8ZW58MHx8fHwxNzgyNTgzNDg1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Indian startup founder working on a laptop, perfect for hero section.",
+        "category": "hero"
+      },
+      "msme_owner": {
+        "url": "https://images.pexels.com/photos/35317008/pexels-photo-35317008.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Indian small business owner in a shop, use for targeting MSMEs.",
+        "category": "feature_audience"
+      },
+      "consulting_session": {
+        "url": "https://images.pexels.com/photos/36765718/pexels-photo-36765718.jpeg",
+        "description": "Professionals discussing business strategy, for the consulting upsell section.",
+        "category": "upsell_consulting"
+      }
+    }
+  },
+  "general_ui_ux_guidelines": [
+    "Always use 'data-testid' on interactive and key informational elements (e.g., data-testid='login-button').",
+    "Do not use generic centralized text alignment for layout; left-align forms, cards, and dense text.",
+    "Use 'sonner' for toast notifications.",
+    "Ensure 'prefers-reduced-motion' fallbacks are in place for framer-motion animations.",
+    "Keep empty states friendly and guiding, leveraging the bilingual capability."
+  ],
+  "instructions_to_main_agent": [
+    "1. Setup a contextual Language Toggle (English/Hindi). Ensure dynamic font switching (Inter <-> Noto Sans Devanagari) across the app.",
+    "2. Build the multi-step Onboarding Form strictly using Shadcn form components, ensuring a clean, minimal UI.",
+    "3. Develop the Dashboard with Shadcn UI, emphasizing trust and clarity (Razorpay style). Avoid thick shadows; rely on 1px borders.",
+    "4. Implement the AI-Matched Schemes as a grid of cards, and build a Scheme Detail Page with a mockup PDF export button.",
+    "5. Design the Readiness Score as a visual circular gauge (0-100) using SVG or recharts.",
+    "6. Create a consulting upsell interface resembling Calendly for booking, and mockup a Razorpay subscription flow for the ₹499/month Pro tier.",
+    "7. Include a functional Admin dashboard with a data table for lead management and CRUD for schemes."
+  ]
+}
+
