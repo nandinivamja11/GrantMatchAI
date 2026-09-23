@@ -127,6 +127,10 @@ class BookingIn(BaseModel):
     time_slot: str
     notes: Optional[str] = ""
 
+class BookingUpdate(BaseModel):
+    name: str
+    phone: str
+
 class UpgradeIn(BaseModel):
     plan: str = "pro"  # pro
 
@@ -591,6 +595,64 @@ async def my_bookings(user=Depends(get_current_user)):
     docs = await db.bookings.find({"user_id": user["id"]}, {"_id": 0}).to_list(100)
     return docs
 
+@api_router.patch("/bookings/{booking_id}")
+async def update_booking(
+    booking_id: str,
+    payload: BookingUpdate,
+    user=Depends(get_current_user),
+):
+    name = payload.name.strip()
+    phone = payload.phone.strip()
+
+    if not name:
+        raise HTTPException(
+            status_code=400,
+            detail="Name is required"
+        )
+
+    if not phone:
+        raise HTTPException(
+            status_code=400,
+            detail="Phone number is required"
+        )
+
+    booking = await db.bookings.find_one(
+        {
+            "id": booking_id,
+            "user_id": user["id"],
+        },
+        {"_id": 0},
+    )
+
+    if not booking:
+        raise HTTPException(
+            status_code=404,
+            detail="Booking not found"
+        )
+
+    await db.bookings.update_one(
+        {
+            "id": booking_id,
+            "user_id": user["id"],
+        },
+        {
+            "$set": {
+                "name": name,
+                "phone": phone,
+                "updated_at": datetime.now(timezone.utc).isoformat(),
+            }
+        },
+    )
+
+    updated = await db.bookings.find_one(
+        {
+            "id": booking_id,
+            "user_id": user["id"],
+        },
+        {"_id": 0},
+    )
+
+    return updated
 
 # ----- Subscription (mocked Razorpay) -----
 @api_router.post("/subscription/upgrade")
