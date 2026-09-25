@@ -9,6 +9,6 @@ if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
 # Import FastAPI app
-from server import app
+from backend.server import app
 
 __all__ = ["app"]

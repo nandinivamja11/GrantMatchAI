@@ -15,7 +15,10 @@ from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from typing import List, Optional, Any, Dict
 from datetime import datetime, timezone, timedelta
 
-from schemes_data import SCHEMES_SEED
+try:
+    from backend.schemes_data import SCHEMES_SEED
+except ImportError:
+    from schemes_data import SCHEMES_SEED
 
 # ----- Setup -----
 ROOT_DIR = Path(__file__).parent
